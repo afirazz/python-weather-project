@@ -82,7 +82,7 @@ def load_data_from_csv(csv_file):
         next(csv_reader)
 
         for row in csv_reader:
-            if row:
+            if row: 
                 csv_list.append([row[0], float(row[1]), float(row[2])])
 
     return csv_list
@@ -155,6 +155,7 @@ def generate_summary(weather_data):
     pass
 
 
+
 def generate_daily_summary(weather_data):
     """Outputs a daily summary for the given weather data.
 
@@ -163,4 +164,15 @@ def generate_daily_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
-    pass
+    daily_summary_string = ""
+
+    for row in weather_data:
+        if row:
+            formatted_date = convert_date(row[0])
+            min_temp_in_f = row[1]
+            max_temp_in_f = row[2]
+            min_temp_in_c = convert_f_to_c(min_temp_in_f)
+            max_temp_in_c = convert_f_to_c(max_temp_in_f)
+            daily_summary_string += f"---- {formatted_date} ----\n  Minimum Temperature: {min_temp_in_c}{DEGREE_SYMBOL}\n  Maximum Temperature: {max_temp_in_c}{DEGREE_SYMBOL}\n\n"
+
+    return daily_summary_string
