@@ -42,7 +42,7 @@ def convert_f_to_c(temp_in_fahrenheit):
 
     temp_in_fahrenheit = float(temp_in_fahrenheit)
     temp_in_celcius = (temp_in_fahrenheit - 32) * 5/9
-    temp_in_celcius_rounded = float("%.1f" % temp_in_celcius)
+    temp_in_celcius_rounded = round(temp_in_celcius, 1)
 
     return temp_in_celcius_rounded
 
