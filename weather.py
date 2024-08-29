@@ -71,15 +71,13 @@ def load_data_from_csv(csv_file):
     csv_list = []
 
     with open(csv_file) as file:
-        csv_reader = csv.reader(file)
-        next(csv_reader)
+        csv_reader = csv.DictReader(file)
 
         for row in csv_reader:
             if row: 
-                csv_list.append([row[0], float(row[1]), float(row[2])])
+                csv_list.append([row["date"], float(row["min"]), float(row["max"])])
 
     return csv_list
-
 
 def find_min(weather_data):
     """Calculates the minimum value in a list of numbers.
