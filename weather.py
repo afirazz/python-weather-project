@@ -178,10 +178,12 @@ def generate_daily_summary(weather_data):
     for row in weather_data:
         if row:
             formatted_date = convert_date(row[0])
-            min_temp_in_f = row[1]
-            max_temp_in_f = row[2]
-            min_temp_in_c = convert_f_to_c(min_temp_in_f)
-            max_temp_in_c = convert_f_to_c(max_temp_in_f)
-            daily_summary_string += f"---- {formatted_date} ----\n  Minimum Temperature: {min_temp_in_c}{DEGREE_SYMBOL}\n  Maximum Temperature: {max_temp_in_c}{DEGREE_SYMBOL}\n\n"
+            min_temp_in_c = convert_f_to_c(row[1])
+            max_temp_in_c = convert_f_to_c(row[2])
+            daily_summary_string += (
+                f"---- {formatted_date} ----\n"
+                f"  Minimum Temperature: {min_temp_in_c}{DEGREE_SYMBOL}\n"
+                f"  Maximum Temperature: {max_temp_in_c}{DEGREE_SYMBOL}\n\n"
+            )
 
     return daily_summary_string
