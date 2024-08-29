@@ -88,22 +88,21 @@ def find_min(weather_data):
         The minimum value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
     """
     weather_data_float = [float(value) for value in weather_data]
-
-    weather_data = weather_data_float 
     
     try:
-        min_value = weather_data[0]
+        min_value = min(weather_data_float)
     except:
         return ()
     
-    min_position = 0
+    # Make a copy of the original list and reverse the order of the items on the list
+    weather_data_reverse = weather_data_float.copy()
+    weather_data_reverse.reverse()
 
-    for index, value in enumerate(weather_data):
-        if value < min_value:
-            min_value = value
-            min_position = index
-        elif value == min_value:
-            min_position = index
+    # Find the position of the minimum value in the reversed list
+    min_position_reverse = weather_data_reverse.index(min_value)
+
+    # To find the last position of the minimum value in the original list, minus the length of the list by 1 (to account for the index starting at 0) and minus the position of the minimum value in the reversed list
+    min_position = (len(weather_data_float) - 1) - min_position_reverse
 
     return min_value, min_position
 
@@ -116,22 +115,21 @@ def find_max(weather_data):
         The maximum value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
     """
     weather_data_float = [float(value) for value in weather_data]
-
-    weather_data = weather_data_float 
     
     try:
-        max_value = weather_data[0]
+        max_value = max(weather_data_float)
     except:
         return ()
     
-    max_position = 0
+    # Make a copy of the original list and reverse the order of the items on the list
+    weather_data_reverse = weather_data_float.copy()
+    weather_data_reverse.reverse()
 
-    for index, value in enumerate(weather_data):
-        if value > max_value:
-            max_value = value
-            max_position = index
-        elif value == max_value:
-            max_position = index
+    # Find the position of the maximum value in the reversed list
+    max_position_reverse = weather_data_reverse.index(max_value)
+
+    # To find the last position of the maximum value in the original list, minus the length of the list by 1 (to account for the index starting at 0) and minus the position of the maximum value in the reversed list
+    max_position = (len(weather_data_float) - 1) - max_position_reverse
 
     return max_value, max_position
 
