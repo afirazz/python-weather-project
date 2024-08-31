@@ -155,10 +155,10 @@ def generate_summary(weather_data):
 
     summary_string = (
         f"{number_of_days} Day Overview\n"
-        f"  The lowest temperature will be {min_temp}{DEGREE_SYMBOL}, and will occur on {date_of_min_temp}.\n"
-        f"  The highest temperature will be {max_temp}{DEGREE_SYMBOL}, and will occur on {date_of_max_temp}.\n"
-        f"  The average low this week is {mean_min_temp}{DEGREE_SYMBOL}.\n"
-        f"  The average high this week is {mean_max_temp}{DEGREE_SYMBOL}.\n"
+        f"  The lowest temperature will be {format_temperature(min_temp)}, and will occur on {date_of_min_temp}.\n"
+        f"  The highest temperature will be {format_temperature(max_temp)}, and will occur on {date_of_max_temp}.\n"
+        f"  The average low this week is {format_temperature(mean_min_temp)}.\n"
+        f"  The average high this week is {format_temperature(mean_max_temp)}.\n"
     )
     
     return summary_string
@@ -180,8 +180,8 @@ def generate_daily_summary(weather_data):
             max_temp_in_c = convert_f_to_c(row[2])
             daily_summary_string += (
                 f"---- {formatted_date} ----\n"
-                f"  Minimum Temperature: {min_temp_in_c}{DEGREE_SYMBOL}\n"
-                f"  Maximum Temperature: {max_temp_in_c}{DEGREE_SYMBOL}\n\n"
+                f"  Minimum Temperature: {format_temperature(min_temp_in_c)}\n"
+                f"  Maximum Temperature: {format_temperature(max_temp_in_c)}\n\n"
             )
 
     return daily_summary_string
